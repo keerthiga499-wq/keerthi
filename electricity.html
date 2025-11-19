@@ -1,0 +1,56 @@
+<html>
+<head>
+     <charset="UTF-8">
+    <name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Charges</title>
+    <script>
+        function calculateCharges() {
+            
+            var connectionType = document.getElementById("connectionType").value;
+            var unitsConsumed = document.getElementById("unitsConsumed").value;
+
+            
+            var charges = 0;
+
+            
+            if (unitsConsumed !== "" && !isNaN(unitsConsumed)) {
+                
+                unitsConsumed = Number(unitsConsumed);
+
+            
+                if (connectionType === "domestic") {
+                    charges = unitsConsumed * 5;  
+                } else if (connectionType === "commercial") {
+                    charges = unitsConsumed * 10;  
+                }
+            }
+
+            
+            document.getElementById("chargesOutput").innerHTML = "Charges: Rs " + charges;
+        }
+    </script>
+</head>
+<body>
+
+<h2>Connection Charges Calculator</h2>
+
+
+<label for="connectionType">Choose connection type:</label>
+<select id="connectionType" onchange="calculateCharges()">
+    <option value="domestic">Domestic</option>
+    <option value="commercial">Commercial</option>
+</select>
+
+<br><br>
+
+
+<label for="unitsConsumed">Enter units consumed:</label>
+<input type="number" id="unitsConsumed" oninput="calculateCharges()" />
+
+<br><br>
+
+
+<p id="chargesOutput">Charges: Rs 0</p>
+
+</body>
+</html>
