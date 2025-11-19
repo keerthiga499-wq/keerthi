@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colorful Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 60px;
+      background: linear-gradient(to bottom right, #8EC5FC, #E0C3FC);
+    }
+
+    #count {
+      font-size: 60px;
+      margin: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 12px 28px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      transition: 0.2s;
+    }
+
+    #incBtn {
+      background-color: #28a745;
+    }
+    #incBtn:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    #decBtn {
+      background-color: #dc3545;
+    }
+    #decBtn:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
+    }
+
+    /* Emoji display */
+    #emoji {
+      font-size: 60px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      height: 60px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Colorful Counter</h1>
+
+  <div id="count">0</div>
+
+  <button id="decBtn" onclick="decrement()">➖ Decrement</button>
+  <button id="incBtn" onclick="increment()">➕ Increment</button>
+
+  <div id="emoji">😊</div>
+
+  <script>
+    let count = 0;
+
+    const emojis = [
+      "😀","😃","😄","😁","😆","😊","😍","🥰","😎","🤩",
+      "😜","😝","🤪","😇","😉","😺","😸","😻","🦄","🌈",
+      "✨","🔥","🌟","🍀","🍉","🎉","🎈","❤️","💛","💚"
+    ];
+
+    function updateDisplay() {
+      document.getElementById("count").innerText = count;
+    }
+
+    function showEmoji() {
+      const emoji = document.getElementById("emoji");
+
+      // Pick a random emoji
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.innerText = randomEmoji;
+
+      // Show animation
+      emoji.style.opacity = 1;
+
+      setTimeout(() => {
+        emoji.style.opacity = 0;
+      }, 500);
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+      showEmoji();
+    }
+
+    function decrement() {
+      count--;
+      updateDisplay();
+      showEmoji();
+    }
+  </script>
+
+</body>
+</html>
